@@ -1,0 +1,12 @@
+﻿@model MyPeriodicTable.Models.Elements
+
+
+<div class="card border-info" style="width: 250px;">
+    <div class="card-header">@Model.Symbol</div>
+    <div class="card-body text-capitalize">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">Atomic Number: @Model.AtomicNumber <br /> Weight: @Model.Weight</p>
+        <p class="card-text"><a href="http://lmgtfy.com/?q=@Model.Name" target="_blank">LMGTFY: @Model.Name</a></p>
+    </div>
+</div>
+

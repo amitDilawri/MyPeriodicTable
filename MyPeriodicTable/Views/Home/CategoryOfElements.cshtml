@@ -1,0 +1,31 @@
+﻿@using MyPeriodicTable.Models
+@model MyPeriodicTable.View_Model.ElementsOfPeriodicTable
+
+@{
+    ViewBag.Title = "CategoryOfElements";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@section Styles{
+    <link href="@Url.Content("~/Content/styles/custom.css")" rel="stylesheet" type="text/css" />
+}
+<br />
+
+<div>
+    @foreach(var elementType in Model.elements)
+    {
+        <div>@Html.Partial("_Heading", elementType)</div>
+        break;
+    }
+</div>
+
+
+<ul class="UlDisplayElements">
+    @foreach (var el in Model.elements)
+    {
+        <li class="LiDisplayElements">
+            <div>@Html.Partial("_ElementsCard", el)</div>
+            
+        </li>
+    }
+</ul>

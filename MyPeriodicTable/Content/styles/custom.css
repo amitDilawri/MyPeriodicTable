@@ -1,0 +1,116 @@
+﻿body {
+}
+
+.table a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+th, td {
+    text-align: center;
+}
+
+.BlueRight {
+    border-right: 5px solid #0000FF !important;
+}
+
+.BlueLeft {
+    border-left: 5px solid #0000FF !important;
+}
+
+.BlueTop {
+    border-top: 5px solid #0000FF !important;
+}
+
+.BlueBottom {
+    border-bottom: 5px solid #0000FF !important;
+}
+
+.Innerborder {
+    color: #0000FF;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.no-border {
+    border-left: none !important;
+    border-bottom: none !important;
+}
+
+.border-blue {
+    border-right: 5px solid #0000FF !important;
+    border-left: 5px solid #0000FF !important;
+    border-top: 5px solid #0000FF !important;
+    /*display: block;*/
+}
+
+.OtherNonMetals {
+    background-color: #22FF22;
+}
+
+.NobleGases {
+    background-color: #77CCFF;
+}
+.TransitionMetals {
+    background-color: #DDBBBB;
+}
+
+.AlkaliMetals {
+    background-color: #FFCC33;
+}
+
+.AlkalineEarthMetals {
+    background-color: #FFFF44;
+}
+
+.Metalloids {
+    background-color: #77DD88;
+}
+
+.PostTransitionMetals {
+    background-color: #99DDCC;
+}
+
+.Lanthanoids {
+    background-color: #FFBB99;
+}
+
+.Actinoids {
+    background-color: #EEBBDD;
+}
+
+.Unknown {
+    background-color: #DDDDDD;
+}
+
+/*ul {
+    list-style-type: none;
+}
+
+ul li {
+        float: left;
+        padding: 5px;
+    }
+
+ul li:nth-child(4n + 5) 
+{
+    clear: left;
+    float: left;
+
+}*/
+
+.UlDisplayElements {
+    list-style-type: none;
+}
+
+.UlDisplayElements .LiDisplayElements {
+        float: left;
+        padding: 5px;
+
+}
+
+.UlDisplayElements .LiDisplayElements:nth-child(4n + 5) {
+        clear: left;
+        float: left;
+}

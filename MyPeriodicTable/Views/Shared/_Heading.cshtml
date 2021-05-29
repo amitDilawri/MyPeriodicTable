@@ -1,0 +1,17 @@
+﻿@model MyPeriodicTable.Models.Elements
+
+@{
+    string name = string.Empty;
+    
+    name = (Model.TypeOfElement == "AlkaliMetals") ? "Alkali Metals" : string.Empty;
+    name += (Model.TypeOfElement == "AlkalineEarthMetals") ? "Alkaline Earth Metals" : string.Empty;
+    name += (Model.TypeOfElement == "Lanthanoids") ? "Lanthanoids" : string.Empty;
+    name += (Model.TypeOfElement == "Actinoids") ? "Actinoids" : string.Empty;
+    name += (Model.TypeOfElement == "TransitionMetals") ? "Transition Metals" : string.Empty;
+    name += (Model.TypeOfElement == "PostTransitionMetals") ? "Post-Transition Metals" : string.Empty;
+    name += (Model.TypeOfElement == "NobleGases") ? "Noble Gases" : string.Empty;
+    name += (Model.TypeOfElement == "OtherNonMetals") ? "Other nonMetals" : string.Empty;
+    name += (Model.TypeOfElement == "Metalloids") ? "Metalloids" : string.Empty;
+}
+
+<h4>@name</h4>

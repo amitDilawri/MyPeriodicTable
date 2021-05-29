@@ -1,0 +1,257 @@
+﻿@using MyPeriodicTable.Models
+@model MyPeriodicTable.View_Model.ElementsOfPeriodicTable
+
+@{
+    ViewBag.Title = "DisplayElements";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@section Styles{
+    <link href="@Url.Content("~/Content/styles/custom.css")" rel="stylesheet" type="text/css" />
+}
+
+@helper ElmentsInPeriodicTable(int startKey, int endKey)
+{
+    foreach (KeyValuePair<int, Elements> element in Model.elementDictionary)
+    {
+        Elements elements = element.Value;
+
+        string background_color = elements.TypeOfElement;
+
+        if (element.Key >= startKey && element.Key <= endKey)
+        {
+                <td class="@background_color" data-toggle="tooltip" data-placement="top" title="@elements.TypeOfElement">
+                    <a href="#">
+                        @elements.AtomicNumber<br />
+                        <strong>@elements.Symbol</strong><br />
+                        <em>@elements.Name</em><br />
+                        @elements.Weight
+                    </a>
+                </td>
+        }
+    }
+}
+
+<div>
+    <h1></h1>
+</div>
+<div class="table-responsive table-sm">
+    <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                            
+            @for (int i = 1; i <= 18; i++)
+            {
+                <th scope="col">@i</th>
+            }       
+            </tr>
+        </thead>
+        <tbody>           
+    @{       
+        for (int i = 1; i <= 10; i++)
+        {           
+            <tr>
+                @if (i == 1)
+                {
+                    <td scope="row">
+                        Atomic<br />
+                        <strong>Sym</strong><br />
+                        Name<br />
+                        Weight
+                    </td>
+                    @ElmentsInPeriodicTable(1, 1)
+                    foreach (KeyValuePair<int, Elements> element in Model.elementDictionary)
+                    {
+
+                        if (element.Key == 1)
+                        {
+                            <td colspan="16"></td>
+                        }
+                    }
+                    @ElmentsInPeriodicTable(2, 2)
+                    
+                    continue;
+                }
+                @if(i == 2)
+                {
+                    <td scope="row">
+                        @i
+                    </td>
+                    @ElmentsInPeriodicTable(3, 4)
+                    foreach (KeyValuePair<int, Elements> element in Model.elementDictionary)
+                    {
+
+                        if (element.Key == 4)
+                        {
+                            <td colspan="10"></td>
+                        }
+                    }
+                    @ElmentsInPeriodicTable(5, 10)
+                    
+                    continue;
+                }
+                @if (i == 3)
+                {
+                    <td scope="row">
+                        @i
+                    </td>
+                    @ElmentsInPeriodicTable(11, 12)
+                    foreach (KeyValuePair<int, Elements> element in Model.elementDictionary)
+                    {
+
+                        if (element.Key == 12)
+                        {
+                            <td colspan="10"></td>
+                        }
+                    }
+                    @ElmentsInPeriodicTable(13, 18)
+                    
+                    continue;
+                }
+                @if (i == 4)
+                {
+                    <td scope="row">
+                        @i
+                    </td>
+                    @ElmentsInPeriodicTable(19, 36)
+                    
+                    continue;
+                }
+                @if(i == 5)
+                {
+                    <td scope="row">
+                        @i
+                    </td>
+                    @ElmentsInPeriodicTable(37, 54)
+                    
+                    continue;
+                }
+                @if (i == 6)
+                {
+                    <td scope="row">
+                        @i
+                    </td>
+                    @ElmentsInPeriodicTable(55, 56)
+                                      
+                    <td style="background-color:#FFBB99" class="BlueTop BlueLeft BlueRight">57-71</td>
+
+                    @ElmentsInPeriodicTable(72, 86)
+                    
+                    continue;
+                }
+                @if (i == 7)
+                {
+                    <td scope="row">
+                        @i
+                    </td>
+                    @ElmentsInPeriodicTable(87, 88)
+                    
+                    <td style="background-color:#EEBBDD" class="BlueLeft BlueRight">89-103</td>
+                    @ElmentsInPeriodicTable(104, 118)
+                    
+                    continue;
+                }
+                @if (i == 8)
+                {
+                    <td scope="row" colspan="3"></td>
+
+                    <td style="background-color:none" class="BlueLeft BlueRight">
+                        <br />
+                        <br />
+                        <br />
+                    </td>
+                    continue;
+                }
+                @if (i == 9)
+                {
+                    <td scope="row" colspan="3"></td>
+                    <td style="background-color:none" class="BlueLeft">
+                        <br />
+                        <br />
+                        <br />
+                    </td>                   
+                    foreach (KeyValuePair<int, Elements> element in Model.elementDictionary)
+                    {
+                        Elements elements = element.Value;
+
+                        string background_color = elements.TypeOfElement;
+
+                        if (element.Key > 56 && element.Key <= 70)
+                        {
+                            <td class="@background_color BlueTop" data-toggle="tooltip" data-placement="top" title="@elements.TypeOfElement">
+                                <a href="#">
+                                    @elements.AtomicNumber<br />
+                                    <strong>@elements.Symbol</strong><br />
+                                    <em>@elements.Name</em><br />
+                                    @elements.Weight
+                                </a>
+                            </td>
+                        }
+                        if (element.Key == 71)
+                        {
+                            <td class="@background_color BlueTop BlueRight" data-toggle="tooltip" data-placement="top" title="@elements.TypeOfElement">
+                                <a href="#">
+                                    @elements.AtomicNumber<br />
+                                    <strong>@elements.Symbol</strong><br />
+                                    <em>@elements.Name</em><br />
+                                    @elements.Weight
+                                </a>
+                            </td>
+                        }
+                    }
+                    continue;
+                }
+                @if (i == 10)
+                {
+                    <td scope="row" colspan="3"></td>
+                    <td style="background-color:none" class="BlueLeft BlueBottom">
+                        <br />
+                        <br />
+                        <br />
+                    </td>
+                    foreach (KeyValuePair<int, Elements> element in Model.elementDictionary)
+                    {
+                        Elements elements = element.Value;
+
+                        string background_color = elements.TypeOfElement;
+
+                        if (element.Key > 88 && element.Key <= 102)
+                        {
+                            <td class="@background_color BlueBottom" data-toggle="tooltip" data-placement="top" title="@elements.TypeOfElement">
+                                <a href="#">
+                                    @elements.AtomicNumber<br />
+                                    <strong>@elements.Symbol</strong><br />
+                                    <em>@elements.Name</em><br />
+                                    @elements.Weight
+                                </a>
+                            </td>
+                        }
+                        if (element.Key == 103)
+                        {
+                            <td class="@background_color BlueBottom BlueRight" data-toggle="tooltip" data-placement="top" title="@elements.TypeOfElement">
+                                <a href="#">
+                                    @elements.AtomicNumber<br />
+                                    <strong>@elements.Symbol</strong><br />
+                                    <em>@elements.Name</em><br />
+                                    @elements.Weight
+                                </a>
+                            </td>
+                        }
+                    }
+                }
+            </tr>
+        }
+    } 
+        </tbody>      
+    </table>  
+</div>
+
+
+
+
+
+
+
+
+

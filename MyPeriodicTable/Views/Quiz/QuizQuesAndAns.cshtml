@@ -1,0 +1,138 @@
+﻿@model List<MyPeriodicTable.Models.AnswerChoice>
+@{
+    ViewBag.Title = "QuizQuesAndAns";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>QuizQuesAndAns</h2>
+
+
+
+@*@foreach(var item in Model)
+{
+    <div>
+        <h5>@item.Question.QuizQuestion</h5>
+    </div>
+    break;
+    @*<div class="form-check">
+        <input type="radio" name="@item.Answer" id="@item.Answer" value="@item.Answer" class="form-check-input" />
+        <label class="form-check-label" for="@item.Answer">@item.Answer</label>
+    </div>
+            <div class="form-check">
+                <input type="radio" name="@item.Answer" id="@item.Answer" value="@item.Answer" class="form-check-input" />
+                <label class="form-check-label" for="@item.Answer">@item.Answer</label>
+            </div>*@
+                @*<div class="form-check">
+                    <input type="radio" name="Option_@questionNumber" id="Option_@questionNumber" value="@quesAndAnswers.Option_3" class="form-check-input" />
+                    <label class="form-check-label" for="Option_@questionNumber">@quesAndAnswers.Option_3</label>
+                </div>*@
+                @*<div class="form-check">
+                    <input type="radio" name="Option_@questionNumber" id="Option_@quesAndAnswers" value="@quesAndAnswers.Option_4" class="form-check-input" />
+                    <label class="form-check-label" for="Option_@quesAndAnswers">@quesAndAnswers.Option_4</label>
+                </div>*@
+                @*<br />*@
+
+<form action="/Quiz/QuizQuesAndAns" method="post" enctype="multipart/form-data" >
+    <div>
+        <p><h4>Enter your name</h4> <input class="form-control-sm" type="text" name="UserName" id="UserName" placeholder="JohnyRockets" /></p>
+    </div>
+
+    @for (int i = 1; i <= 5; i++)
+    {
+        foreach (var item in Model)
+        {
+            if (item.QuestionID == i) //Change i to random number to shuffle the quiz
+            {
+                <div>
+                    <h5>@item.Question.QuizQuestion</h5>
+                </div>
+                break;
+            }
+
+        }
+
+        foreach (var item in Model)
+        {
+
+            if (item.QuestionID == i)
+            {
+
+                <div class="form-check">
+                    <input type="radio" name="@item.QuestionID" id="@item.QuestionID" value="@item.Answer" class="form-check-input" />
+                    
+                    <label class="form-check-label" for="@item.QuestionID">@item.Answer</label>
+                </div>
+
+            }
+
+        }
+        <br />
+
+    }
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+    <a class="btn btn-outline-danger" href="/Home/DisplayElements">Cancel</a>
+</form>
+
+
+
+
+
+
+
+
+
+@*@helper ListOfQuestions(int questionNumber)
+{
+foreach (KeyValuePair<int, QuizQuesAndAnswers> question in Model.questionsDictionary)
+{
+    QuizQuesAndAnswers quesAndAnswers = question.Value;
+
+    if (question.Key == questionNumber)
+    {
+            <div>
+                <h5>@quesAndAnswers.Question</h5>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="Option_@questionNumber" id="Option_@questionNumber" value="@quesAndAnswers.Option_1" class="form-check-input" />
+                <label class="form-check-label" for="Option_@questionNumber">@quesAndAnswers.Option_1</label>
+            </div>
+                <div class="form-check">
+                    <input type="radio" name="Option_@questionNumber" id="Option_@questionNumber" value="@quesAndAnswers.Option_2" class="form-check-input" />
+                    <label class="form-check-label" for="Option_@questionNumber">@quesAndAnswers.Option_2</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="Option_@questionNumber" id="Option_@questionNumber" value="@quesAndAnswers.Option_3" class="form-check-input" />
+                    <label class="form-check-label" for="Option_@questionNumber">@quesAndAnswers.Option_3</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="Option_@questionNumber" id="Option_@quesAndAnswers" value="@quesAndAnswers.Option_4" class="form-check-input" />
+                    <label class="form-check-label" for="Option_@quesAndAnswers">@quesAndAnswers.Option_4</label>
+                </div>
+                <br />
+    }
+}
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10">
+            <h5>Knowledge Check - Answer all the questions below</h5>
+            @using (Html.BeginForm("QuizSelection", "Quiz", FormMethod.Post))
+            {
+                <div>
+                    <p><h4>Enter your name</h4> <input class="form-control-sm" type="text" name="UserName" id="UserName" placeholder="JohnyRockets" /></p>
+                </div>
+                for (int i = 1; i <= Model.questionsDictionary.Count; i++)
+                {
+                    <div>
+                        @ListOfQuestions(i)
+                    </div>
+                }
+
+                <button type="submit" class="btn btn-outline-success">Submit</button>
+                <a class="btn btn-outline-danger" href="/Home/DisplayElements">Cancel</a>
+            }
+        </div>
+    </div>
+</div>*@

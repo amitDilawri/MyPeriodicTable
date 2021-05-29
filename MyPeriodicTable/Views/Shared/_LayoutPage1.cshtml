@@ -1,0 +1,72 @@
+﻿@*@model MyPeriodicTable.Models.SearchElements*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    @RenderSection("Styles", required: false)
+    @RenderSection("Scripts", required: false)
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-primary navbar-dark">
+        <a class="navbar-brand" href="/home/DisplayElements"><h2>Periodic Table</h2> </a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    element types
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul>
+                    <li class="dropdown-item"><strong>Metals</strong></li>
+                    </ul>
+                    <div class="dropdown-divider"></div>
+                    <a>@Html.ActionLink("Alkali metals", "CategoryOfElements", "Home" , new { ElementType = "AlkaliMetals" }, new { @class = "dropdown-item" })</a>
+                    <a>@Html.ActionLink("Alkaline earth metals", "CategoryOfElements", "Home" , new { ElementType = "AlkalineEarthMetals" }, new { @class = "dropdown-item"})</a>
+                    <a>@Html.ActionLink("Lanthanoids", "CategoryOfElements", "Home", new { ElementType = "Lanthanoids" }, new { @class = "dropdown-item" })</a>
+                    <a>@Html.ActionLink("Actinoids", "CategoryOfElements", "Home", new { ElementType = "Actinoids"}, new { @class = "dropdown-item"})</a>
+                    <a>@Html.ActionLink("Transition metals", "CategoryOfElements", "Home", new { ElementType = "TransitionMetals" }, new { @class = "dropdown-item"})</a>
+                    <a>@Html.ActionLink("Post-transition metals", "CategoryOfElements", "Home", new { ElementType = "PostTransitionMetals" }, new { @class = "dropdown-item" })</a>                   
+                    <div class="dropdown-divider"></div>
+                    <ul>
+                        <li class="dropdown-item"><strong>Nonmetals</strong></li>
+                    </ul>
+                    <a>@Html.ActionLink("Noble Gases", "CategoryOfElements", "Home", new { ElementType = "NobleGases" }, new { @class = "dropdown-item" })</a>
+                    <a>@Html.ActionLink("Other nonmetals", "CategoryOfElements", "Home", new { ElementType = "OtherNonMetals" }, new { @class = "dropdown-item" })</a>
+                    <div class="dropdown-divider"></div>
+                    <a>@Html.ActionLink("Metalloids", "CategoryOfElements", "Home", new { ElementType = "Metalloids" }, new { @class = "dropdown-item" })</a>
+                    <div class="dropdown-divider"></div>
+                    
+                    <a href="/Quiz/DisplayQuiz" class="dropdown-item bg-warning"><strong>Quiz4Fun</strong></a>
+                </div>
+            </li>
+           </ul>
+        
+       
+            @using (Html.BeginForm("SearchElement","Home", FormMethod.Post, new { @class = "form-inline", role = "form" }))
+            {
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchElement" value="@ViewBag.search" />
+                
+                <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Search" />
+            }
+            
+       
+</nav>
+    
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12" style="min-height:610px">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-md bg-white navbar-dark">
+        <label class="navbar-brand text-dark font-weight-bold">designed by amit dilawri</label>
+    </nav>
+</body>
+</html>

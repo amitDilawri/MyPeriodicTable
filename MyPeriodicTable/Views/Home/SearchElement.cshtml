@@ -1,0 +1,48 @@
+﻿@using MyPeriodicTable.Models
+@model MyPeriodicTable.View_Model.ElementsOfPeriodicTable
+
+@{
+    ViewBag.Title = "CategoryOfElements";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@section Styles{
+    <link href="@Url.Content("~/Content/styles/custom.css")" rel="stylesheet" type="text/css" />
+}
+<br />
+
+
+@if (Model.elements.Count == 0)
+{
+    string userInput = Request["searchElement"];
+    int num;
+    if (int.TryParse(userInput, out num))
+    {
+        <h2 style="color:red">"@userInput" is not a valid Atomic Number. Search between 1 thru 118.</h2>
+    }
+    else if(userInput.Length <= 2)
+    {
+        <h2 style="color:red">"@userInput" is not a correct symbol. Search another symbol!</h2>
+    }
+    else
+    {
+        <h2 style="color:red">"@userInput"... is not part of the periodic table. </h2>
+    }
+
+
+}
+else
+{
+    <ul class="UlDisplayElements">
+        @foreach (var el in Model.elements)
+        {
+
+            <li class="LiDisplayElements">
+                <div>@Html.Partial("_ElementsCard", el)</div>
+            </li>
+
+
+        }
+    </ul>
+
+}
